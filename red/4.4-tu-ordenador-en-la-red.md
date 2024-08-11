@@ -4,7 +4,9 @@ ip link show
 ```
 
 Para asignar una direccion IP a una interfaz de red:
-sudo ip addr add 192.168.0.5/255.255.255.0 dev ens33
+```
+  sudo ip addr add 192.168.0.5/255.255.255.0 dev ens33
+```
 
 Para mostrar la informacion detallada sobre las direcciones IP asignadas a las interfaces de red:
 ```
