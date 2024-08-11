@@ -1,0 +1,3 @@
+usermod -aG sudo tiago
+
+reboot

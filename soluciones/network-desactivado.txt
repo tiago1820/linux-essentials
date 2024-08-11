@@ -1,0 +1,19 @@
+Problema: O network estava desativado
+
+sudo lshw -C network
+
+sudo systemctl restart NetworkManager 
+
+sudo lshw -C network
+
+Após esses dois comandos me mostrou como resultado network desativado, depois fiz o seguinte:
+
+ip link show
+
+sudo ip link set enp1s0 up
+
+sudo dhclient enp1s0
+
+ip addr show enp1s0
+
+ping google.com
