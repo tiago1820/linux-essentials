@@ -1,80 +1,94 @@
-Para obtener una lista de todas las interfaces de red disponibles en el sistema:
+### 1. dig (Domain Information Groper):
+
+- Descripción: Herramienta para realizar consultas DNS. Permite obtener información sobre nombres de dominio, como direcciones IP o registros DNS específicos.
+
+- Ejemplo:
+Consultar la IP de un dominio:
 ```
-ip link show
+  dig google.com
+```
+- Esto te muestra los registros A (direcciones IPv4) asociados al dominio google.com.
+
+- Consultar el registro MX (correo) de un dominio:
+```
+  dig google.com MX
 ```
 
-Para asignar una direccion IP a una interfaz de red:
-```
-  sudo ip addr add 192.168.0.5/255.255.255.0 dev ens33
-```
+### 2. host:
 
-Para mostrar la informacion detallada sobre las direcciones IP asignadas a las interfaces de red:
-```
-ip addr show
-```
+- Descripción: Comando más simple que dig para resolver nombres de dominio y obtener direcciones IP.
 
-Para verificar la conectividad de red entre tu maquina y el dispositivo
-con la direccion IP "192.168.0.1"
-```
-  ping -c 3 192.168.0.1
-```
-
-Para mostrar la tabla de enrutamiento de IP en el sistema:
-```
-  ip route show
-```
-
-Para agregar una ruta por defecto en la tabla de enrutamiento del sistema:
-```
-sudo ip route add default via 192.168.0.1
-```
-
-Para agregar una dirección IPV6 a una interfaz de red:
-```
-  sudo ip addr add 2001:db8:0:abcd:0:0:0:7334/64 dev ens33
-```
-
-Para enviar un solo paquete de prueba (ICMP echo request) a una dirección IPv6 específica:
-```
- ping6 -c 1fe80::010c:29ff:fe33:3b25%ens33
-```
-
-Para mostrar el contenido del archivo "/etc/resolv.conf".
-Este archivo especifica cómo el sistema debe resolver los nombres de dominio en
-direcciones IP mediante el uso de servidores DNS:
-```
-  cat /etc/resolv.conf
-```
-
-Para mostrar información sobre una dirección IP asociada a un nombre de dominio:
-```
-  host learning.lpi.org
-```
-
-Para realizar una consulta DNS para obtener información sobre un dominio:
+- Ejemplo: Consultar la IP de un dominio:
 
 ```
-  dig learning.lpi.org
+  host google.com
 ```
 
-Para visualizar las conexiones de red y los sockets en el sistema:
+- Te devuelve la IP asociada a google.com.
+
+- Invertir una IP para obtener su dominio (PTR):
+
 ```
-  ss
+  host 8.8.8.8
 ```
 
-Algunas opciones del comando ss:
- -p: Muestra el PID y el nombre del proceso asociado con cada conexión de red o socket.
- -s: Muestra un resumen estadístico de los sockets en el sistema.
- -4: Muestra solo las conexiones que utilizan el protocolo IPv4.
- -6: Muestra solo las conexiones que utilizan el protocolo IPv6.
- -t: Muestra solo las conexiones que utilizan el protocolo TCP.
- -u: Muestra solo las conexiones que utilizan el protocolo UDP.
+- Muestra el nombre de dominio asociado a la IP.
 
-Comandos utilizados en el capitulo de redes:
- - dig
- - host
- - ip
- - ping
- - ss
+### 3. ip:
 
+- Descripción: Comando usado para gestionar y consultar configuraciones de red, como interfaces, rutas, y direcciones IP.
 
+- Ejemplo: Ver todas las interfaces de red:
+
+```
+  ip link show
+```
+
+- Muestra el estado y las configuraciones básicas de las interfaces.
+
+- Asignar una dirección IP a una interfaz:
+
+```
+  sudo ip addr add 192.168.1.100/24 dev enp1s0
+```
+
+- Esto asigna la IP 192.168.1.100 a la interfaz enp1s0.
+
+### 4. ping:
+
+- Descripción: Comando para probar la conectividad entre dos dispositivos enviando paquetes ICMP.
+
+- Ejemplo:
+Verificar la conectividad con una IP o dominio:
+```
+  ping google.com
+```
+
+- Envía paquetes a google.com y muestra el tiempo de respuesta.
+
+- Hacer una prueba con un número limitado de paquetes:
+
+```
+  ping -c 4 8.8.8.8
+```
+
+- Envia solo 4 paquetes a la dirección IP 8.8.8.8.
+
+### 5. ss (Socket Statistics):
+
+- Descripción: Comando para mostrar información detallada sobre conexiones de red y sockets.
+
+- Ejemplo:
+Ver todas las conexiones TCP activas:
+```
+  ss -t
+```
+
+- Muestra todas las conexiones TCP abiertas en el sistema.
+
+- Ver conexiones en escucha (puertos abiertos):
+```
+  ss -l
+```
+
+- Muestra los puertos en los que el sistema está escuchando.
