@@ -33,7 +33,7 @@ grub2-mkconfig -o /boot/grub2/grub.cfg
 ```
 grub2-mkconfig -o /boot/efi/EFI/fedora/grub.cfg
 ```
-## 4. Reiniciar y Administrar la VM con virsh
+### 4. Reiniciar y Administrar la VM con virsh
 - Apaga la VM desde virt-manager o desde la terminal para aplicar los cambios.
 - Abre una terminal y usa virsh para administrar la VM:
 - Listar todas las VMs:
@@ -54,28 +54,4 @@ virsh console debian12
 ```
 ## Conclusión
 Este procedimiento permite la creación y configuración de una VM en Linux con salida de consola serial habilitada. Aprendí a usar virt-manager para la creación inicial de la VM y virsh para su administración mediante comandos en la terminal. Este método es útil en entornos de servidor donde el acceso a la GUI es limitado.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
