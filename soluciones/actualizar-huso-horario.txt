@@ -1,8 +1,0 @@
-corregir huso horario
-
-timedatectl
-timedatectl list-timezones
-timedatectl list-timezones | grep America
-sudo timedatectl set-timezone Region/City
-sudo timedatectl set-timezone America/Argentina/Buenos_Aires
-date
